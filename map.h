@@ -1,6 +1,7 @@
 #pragma once
 #include "game.h"
 extern int ghg;
+extern int ade;
 class Map
 {
 public:

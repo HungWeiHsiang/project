@@ -363,7 +363,7 @@ void GameObject::dead()
 {
 	if((gx-px<32&&px-gx<32&&gy==py)||(gy-py<32&&py-gy<32&&px==gx))
 	{
-//		gameover();
+		gameover();
 	}
 }
 void GameObject::gameover()

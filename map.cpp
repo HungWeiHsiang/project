@@ -4,6 +4,7 @@
 #include "game.h"
 using namespace std;
 int ghg=0;
+int ade=0;
 int codo3[20][25]=
 {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -105,6 +106,7 @@ Map::Map()
 	{
 		LoadMap(lvl1);
 	}
+	
 	if(ggov())
 	{
 		LoadMap(gamo);
