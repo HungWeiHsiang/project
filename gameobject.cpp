@@ -439,7 +439,7 @@ void Ghost::Update()
 	{
 		while(cntt>=1000&&gover==0&&t==xpos&&r==ypos)
 		{
-			if(xpos-px>=-48&&ypos-py>=-48&&xpos-px<=48&&ypos-py<=48)
+			if(xpos-px>=-80&&ypos-py>=-80&&xpos-px<=80&&ypos-py<=80)
 			{
 				int tt=rand()%10+3;
 				int dn=tt%4;
