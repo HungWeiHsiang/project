@@ -117,7 +117,7 @@ void GameObject::Update()
 	}
 	int t=xpos;
 	int r=ypos;
-	if(ugl==2&&cntt>=600)
+	if(ugl==2&&cntt>=1000)
 	{
 		ugl=3;
 		cout<<"Warning:From now on,red clouds will chase you if you are close enough to them!!"<<endl; 
@@ -125,7 +125,7 @@ void GameObject::Update()
 	star=star+1;
 	if(star>400)
 	{
-	if(cntt>=600)
+	if(cntt>=1000)
 	{
 		if(xpos==px&&ypos-py<=96&&ypos>py)
 		{
@@ -420,11 +420,11 @@ void Ghost::Update()
 	{
 		cntt=cntt+1;
 	}
-	if(cntt==800)
+	if(cntt==1000)
 	{
 		cout<<"Warning:crabs escape!!"<<endl;
 	}
-	if(cntt>=800&&gover==0)
+	if(cntt>=1000&&gover==0)
 	{
 		
 		lvl1[3][11]=1;
@@ -437,47 +437,138 @@ void Ghost::Update()
 	star=star+1;
 	if(star>400)
 	{
-	while(cntt>=800&&gover==0&&t==xpos&&r==ypos)
-	{
-		
-		int tt=rand()%10+3;
-		int dn=tt%4;
-		switch(dn)
+		while(cntt>=1000&&gover==0&&t==xpos&&r==ypos)
 		{
-		case 0:
-			if(i!=2&&lvl1[ypos/32][xpos/32+1]!=0&&lvl1[(ypos+31)/32][xpos/32+1]!=0)
+			if(xpos-px>=-48&&ypos-py>=-48&&xpos-px<=48&&ypos-py<=48)
 			{
-				xpos=xpos+8;
-				i=0;
-				break;
+				int tt=rand()%10+3;
+				int dn=tt%4;
+				switch(dn)
+				{
+				case 0:
+					if(i!=2&&lvl1[ypos/32][xpos/32+1]!=0&&lvl1[(ypos+31)/32][xpos/32+1]!=0)
+					{
+						xpos=xpos+4;
+						i=0;
+						break;
+					}
+				case 1:
+					if(i!=3&&lvl1[ypos/32+1][xpos/32]!=0&&lvl1[ypos/32+1][(xpos+31)/32]!=0)
+					{
+						ypos=ypos+4;
+						i=1;
+						break;
+					}
+				case 2:
+					if(i!=0&&lvl1[ypos/32][(xpos-1)/32]!=0&&lvl1[(ypos+31)/32][(xpos-1)/32]!=0)
+					{
+						xpos=xpos-4;
+						i=2;
+						break;
+					}
+				case 3:
+					if(i!=1&&lvl1[(ypos-1)/32][xpos/32]!=0&&lvl1[(ypos-1)/32][(xpos+31)/32]!=0)
+					{
+						ypos=ypos-4;
+						i=3;
+						break;
+					}
+				default:
+					{
+						break;	
+					}		
+				}	
 			}
-		case 1:
-			if(i!=3&&lvl1[ypos/32+1][xpos/32]!=0&&lvl1[ypos/32+1][(xpos+31)/32]!=0)
+			else
 			{
-				ypos=ypos+8;
-				i=1;
-				break;
+				if(xpos%32==4)
+				{
+					xpos=xpos-4;
+				}
+				if(xpos%32==28)
+				{
+					xpos=xpos+4;
+				}
+				if(ypos%32==4)
+				{
+					ypos=ypos-4;
+				}
+				if(ypos%32==28)
+				{
+					ypos=ypos+4;
+				}
+				if(xpos%32==24)
+				{
+					xpos=xpos+8;
+				}
+				if(xpos%32==8)
+				{
+					xpos=xpos-8;
+				}
+				if(ypos%32==24)
+				{
+					ypos=ypos+8;
+				}
+				if(ypos%32==8)
+				{
+					ypos=ypos-8;
+				}
+				if(xpos%32==12)
+				{
+					xpos=xpos-12;
+				}
+				if(xpos%32==20)
+				{
+					xpos=xpos+12;
+				}
+				if(ypos%32==12)
+				{
+					ypos=ypos-12;
+				}
+				if(ypos%32==20)
+				{
+					ypos=ypos+12;
+				}
+				int tt=rand()%10+3;
+				int dn=tt%4;
+				switch(dn)
+				{
+				case 0:
+					if(i!=2&&lvl1[ypos/32][xpos/32+1]!=0&&lvl1[(ypos+31)/32][xpos/32+1]!=0)
+					{
+						xpos=xpos+16;
+						i=0;
+						break;
+					}
+				case 1:
+					if(i!=3&&lvl1[ypos/32+1][xpos/32]!=0&&lvl1[ypos/32+1][(xpos+31)/32]!=0)
+					{
+						ypos=ypos+16;
+						i=1;
+						break;
+					}
+				case 2:
+					if(i!=0&&lvl1[ypos/32][(xpos-1)/32]!=0&&lvl1[(ypos+31)/32][(xpos-1)/32]!=0)
+					{
+						xpos=xpos-16;
+						i=2;
+						break;
+					}
+				case 3:
+					if(i!=1&&lvl1[(ypos-1)/32][xpos/32]!=0&&lvl1[(ypos-1)/32][(xpos+31)/32]!=0)
+					{
+						ypos=ypos-16;
+						i=3;
+						break;
+					}
+				default:
+					{
+						break;	
+					}		
+				}	
 			}
-		case 2:
-			if(i!=0&&lvl1[ypos/32][(xpos-1)/32]!=0&&lvl1[(ypos+31)/32][(xpos-1)/32]!=0)
-			{
-				xpos=xpos-8;
-				i=2;
-				break;
-			}
-		case 3:
-			if(i!=1&&lvl1[(ypos-1)/32][xpos/32]!=0&&lvl1[(ypos-1)/32][(xpos+31)/32]!=0)
-			{
-				ypos=ypos-8;
-				i=3;
-				break;
-			}
-		default:
-			{
-				break;	
-			}		
-		}	
-	}
+				
+		}
 	}
 	gx=xpos;
 	gy=ypos;
@@ -614,7 +705,7 @@ void Player::Update()
 	{0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
-	if(cntt>=800&&gover==0)
+	if(cntt>=1000&&gover==0)
 	{
 		lvl1[3][11]=1;
 		lvl1[3][13]=1;
@@ -1204,7 +1295,7 @@ void Chi::Update()
 	{0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
-	if(cntt>=800&&gover==0)
+	if(cntt>=1000&&gover==0)
 	{
 		lvl1[3][11]=1;
 		lvl1[3][13]=1;

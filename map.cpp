@@ -160,7 +160,7 @@ void Map::upd()
 {
 	static int ccn=0;
 	ccn=ccn+1;
-	if(ccn>=280&&ccn<320)
+	if(ccn>=400&&ccn<480)
 	{
 		if(ccn%16==0||ccn%16==1||ccn%16==2||ccn%16==3||ccn%16==4||ccn%16==5||ccn%16==6||ccn%16==7)
 		{
@@ -177,7 +177,7 @@ void Map::upd()
 			lvl1[16][13]=0;
 		}
 	}
-	if(ccn>=320&&ccn<350)
+	if(ccn>=480&&ccn<500)
 	{
 		if(ccn%2==0)
 		{
@@ -194,7 +194,7 @@ void Map::upd()
 			lvl1[16][13]=0;
 		}
 	}
-	if(ccn>=350)
+	if(ccn>=500)
 	{
 		lvl1[3][11]=1;
 		lvl1[3][13]=1;
