@@ -39,7 +39,6 @@ int width,int height,bool fullscreen)
 	}
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
-        cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << endl;
     }
     else
     {
@@ -47,7 +46,6 @@ int width,int height,bool fullscreen)
         window = SDL_CreateWindow( title, xpos, ypos, width, height, SDL_WINDOW_SHOWN );
         if( window == NULL )
         {
-            cout << "Window could not be created! SDL Error: " << SDL_GetError() << endl;
         }
         else
         {
@@ -55,19 +53,12 @@ int width,int height,bool fullscreen)
             renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
             if( renderer == NULL )
             {
-                cout << "Renderer could not be created! SDL Error: " << SDL_GetError() << endl;
             }
             else
             {
-                //Initialize renderer color
                 SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 
-                //Initialize PNG loading
                 int imgFlags = IMG_INIT_PNG;
-                if( !( IMG_Init( imgFlags ) & imgFlags ) )
-                {
-                    cout << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << endl;
-                }
                 ruu = 1;
             }
         }
@@ -152,7 +143,6 @@ void Game::clean()
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
     IMG_Quit();
-	cout<<"game cleaned"<<endl;
 }
 
 bool Game::running()

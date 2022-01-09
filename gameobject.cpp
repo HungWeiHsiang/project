@@ -16,7 +16,7 @@ int fin=0;
 int cch=0;
 int tes=0;
 int ugl=1;
-int star=0;
+int star=300;
 static int cntt=0;
 static int s=1;
 static int v=2;
@@ -93,7 +93,7 @@ void GameObject::Update()
 	{0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
-	if(cntt>=1000&&gover==0)
+	if(cntt>=800&&gover==0)
 	{
 		lvl1[3][11]=1;
 		lvl1[3][13]=1;
@@ -102,13 +102,13 @@ void GameObject::Update()
 	}
 	if(gover==0)
 	{
-		if(ugl==3&&xpos%32==0&&ypos%32==0&&cntt>=2400)
+		if(ugl==3&&xpos%32==0&&ypos%32==0&&cntt>=800)
 		{
 			cout<<"Warning:red clouds become very very fast!!"<<endl;
 			acc=4;
 			ugl=4;
 		}
-		else if(ugl==1&&xpos%32==0&&ypos%32==0&&cntt>=800)
+		else if(ugl==1&&xpos%32==0&&ypos%32==0&&cntt>=400)
 		{
 			cout<<"Warning:red clouds become more faster!!"<<endl;
 			acc=2;
@@ -117,7 +117,7 @@ void GameObject::Update()
 	}
 	int t=xpos;
 	int r=ypos;
-	if(ugl==2&&cntt>=1600)
+	if(ugl==2&&cntt>=600)
 	{
 		ugl=3;
 		cout<<"Warning:From now on,red clouds will chase you if you are close enough to them!!"<<endl; 
@@ -125,7 +125,7 @@ void GameObject::Update()
 	star=star+1;
 	if(star>400)
 	{
-	if(cntt>=1600)
+	if(cntt>=600)
 	{
 		if(xpos==px&&ypos-py<=96&&ypos>py)
 		{
@@ -361,7 +361,7 @@ void GameObject::Update()
 }
 void GameObject::dead()
 {
-	if((gx-px<32&&px-gx<32&&gy==py)||(gy-py<32&&py-gy<32&&px==gx))
+	if((gx-px<24&&px-gx<24&&gy==py)||(gy-py<24&&py-gy<24&&px==gx)||(gx-px<12&&px-gx<12&&gy-py<12&&py-gy<12))
 	{
 		gameover();
 	}
@@ -420,11 +420,11 @@ void Ghost::Update()
 	{
 		cntt=cntt+1;
 	}
-	if(cntt==1000)
+	if(cntt==800)
 	{
 		cout<<"Warning:crabs escape!!"<<endl;
 	}
-	if(cntt>=1000&&gover==0)
+	if(cntt>=800&&gover==0)
 	{
 		
 		lvl1[3][11]=1;
@@ -437,7 +437,7 @@ void Ghost::Update()
 	star=star+1;
 	if(star>400)
 	{
-	while(cntt>=1000&&gover==0&&t==xpos&&r==ypos)
+	while(cntt>=800&&gover==0&&t==xpos&&r==ypos)
 	{
 		
 		int tt=rand()%10+3;
@@ -447,28 +447,28 @@ void Ghost::Update()
 		case 0:
 			if(i!=2&&lvl1[ypos/32][xpos/32+1]!=0&&lvl1[(ypos+31)/32][xpos/32+1]!=0)
 			{
-				xpos=xpos+u;
+				xpos=xpos+8;
 				i=0;
 				break;
 			}
 		case 1:
 			if(i!=3&&lvl1[ypos/32+1][xpos/32]!=0&&lvl1[ypos/32+1][(xpos+31)/32]!=0)
 			{
-				ypos=ypos+u;
+				ypos=ypos+8;
 				i=1;
 				break;
 			}
 		case 2:
 			if(i!=0&&lvl1[ypos/32][(xpos-1)/32]!=0&&lvl1[(ypos+31)/32][(xpos-1)/32]!=0)
 			{
-				xpos=xpos-u;
+				xpos=xpos-8;
 				i=2;
 				break;
 			}
 		case 3:
 			if(i!=1&&lvl1[(ypos-1)/32][xpos/32]!=0&&lvl1[(ypos-1)/32][(xpos+31)/32]!=0)
 			{
-				ypos=ypos-u;
+				ypos=ypos-8;
 				i=3;
 				break;
 			}
@@ -498,7 +498,7 @@ void Ghost::Update()
 }
 void Ghost::dead()
 {
-	if((gx-px<32&&px-gx<32&&gy==py)||(gy-py<32&&py-gy<32&&px==gx)) 
+	if((gx-px<24&&px-gx<24&&gy==py)||(gy-py<24&&py-gy<24&&px==gx)||(gy-py<12&&py-gy<12&&gx-px<12&&px-gx<12)) 
 	{
 		gameover();
 	}
@@ -614,7 +614,7 @@ void Player::Update()
 	{0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
-	if(cntt>=1000&&gover==0)
+	if(cntt>=800&&gover==0)
 	{
 		lvl1[3][11]=1;
 		lvl1[3][13]=1;
@@ -642,7 +642,7 @@ void Player::Update()
 	int xyx=xpo;
 	int yxy=ypo;
 	star=star+1;
-	if(star>400)
+	if(star>300)
 	{
 	if(cup!=0&&cdo!=0&&cri!=0)
 	{
@@ -1204,7 +1204,7 @@ void Chi::Update()
 	{0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
-	if(cntt>=1000&&gover==0)
+	if(cntt>=800&&gover==0)
 	{
 		lvl1[3][11]=1;
 		lvl1[3][13]=1;
@@ -1218,7 +1218,7 @@ void Chi::Update()
 	{
 	if(r<640)
 	{
-		if(det<24)
+		if(det<16)
 		{
 			if(xpo==px&&ypo-py<=96&&ypo>py)
 			{
@@ -1384,7 +1384,7 @@ void Chi::Update()
 				}
 			}	
 		}
-		if(det>=24)
+		if(det>=16)
 		{
 			if(xpo==px&&ypo-py<=96&&ypo>py)
 			{
@@ -1544,7 +1544,7 @@ void Chi::Update()
 }
 void Chi::ced()
 {
-	if((cx-px<32&&px-cx<32&&cy==py)||(cy-py<32&&py-cy<32&&cx==px))
+	if((cx-px<16&&px-cx<16&&cy==py)||(cy-py<16&&py-cy<16&&cx==px)||(cy-py<8&&py-cy<8&&cx-px<8&&px-cx<8))
 	{
 		xpo=0+32*cch;
 		ypo=640;
