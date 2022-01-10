@@ -160,6 +160,23 @@ void Map::upd()
 {
 	static int ccn=0;
 	ccn=ccn+1;
+	if((ccn<=200&&ccn>=196)||(ccn<=400&&ccn>=396))
+	{
+		for(int iiii=0;iiii<20;iiii++)
+			{
+				for(int jjjj=0;jjjj<25;jjjj++)
+				{
+					if(lvl1[iiii][jjjj]==1)
+					{
+						lvl1[iiii][jjjj]=2;
+					}
+					else if(lvl1[iiii][jjjj]==2)
+					{
+						lvl1[iiii][jjjj]=1;
+					}
+				}
+			}
+	}
 	if(ccn>=400&&ccn<480)
 	{
 		if(ccn%16==0||ccn%16==1||ccn%16==2||ccn%16==3||ccn%16==4||ccn%16==5||ccn%16==6||ccn%16==7)
@@ -200,5 +217,27 @@ void Map::upd()
 		lvl1[3][13]=1;
 		lvl1[16][11]=1;
 		lvl1[16][13]=1;
+	}
+	static int vvi=0;
+	if(finn())
+	{
+		vvi=vvi+1;
+		if(vvi%4==0)
+		{
+			for(int iiii=0;iiii<20;iiii++)
+			{
+				for(int jjjj=0;jjjj<25;jjjj++)
+				{
+					if(vic[iiii][jjjj]==1)
+					{
+						vic[iiii][jjjj]=2;
+					}
+					else if(vic[iiii][jjjj]==2)
+					{
+						vic[iiii][jjjj]=1;
+					}
+				}
+			}	
+		}
 	}
 }

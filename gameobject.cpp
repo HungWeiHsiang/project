@@ -93,7 +93,7 @@ void GameObject::Update()
 	{0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
-	if(cntt>=800&&gover==0)
+	if(cntt>=1000&&gover==0)
 	{
 		lvl1[3][11]=1;
 		lvl1[3][13]=1;
@@ -102,11 +102,11 @@ void GameObject::Update()
 	}
 	if(gover==0)
 	{
-		if(ugl==3&&xpos%32==0&&ypos%32==0&&cntt>=800)
+		if(ugl==2&&xpos%32==0&&ypos%32==0&&cntt>=800)
 		{
 			cout<<"Warning:red clouds become very very fast!!"<<endl;
 			acc=4;
-			ugl=4;
+			ugl=3;
 		}
 		else if(ugl==1&&xpos%32==0&&ypos%32==0&&cntt>=400)
 		{
@@ -117,9 +117,9 @@ void GameObject::Update()
 	}
 	int t=xpos;
 	int r=ypos;
-	if(ugl==2&&cntt>=1000)
+	if(ugl==3&&cntt>=1000)
 	{
-		ugl=3;
+		ugl=4;
 		cout<<"Warning:From now on,red clouds will chase you if you are close enough to them!!"<<endl; 
 	}
 	star=star+1;
@@ -439,7 +439,7 @@ void Ghost::Update()
 	{
 		while(cntt>=1000&&gover==0&&t==xpos&&r==ypos)
 		{
-			if(xpos-px>=-80&&ypos-py>=-80&&xpos-px<=80&&ypos-py<=80)
+			if(xpos-px>=-128&&ypos-py>=-128&&xpos-px<=128&&ypos-py<=128)
 			{
 				int tt=rand()%10+3;
 				int dn=tt%4;
