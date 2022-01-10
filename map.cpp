@@ -218,7 +218,37 @@ void Map::upd()
 		lvl1[16][11]=1;
 		lvl1[16][13]=1;
 	}
+	
 	static int vvi=0;
+	if(ggov()&&!finn())
+	{
+		vvi=vvi+1;
+		if(vvi>=25)
+		{
+			for(int iiii=0;iiii<20;iiii++)
+			{
+				for(int jjjj=0;jjjj<25;jjjj++)
+				{
+					if((iiii+jjjj)%4==0)
+					{
+						gamo[iiii][jjjj]=0;
+					}
+					if(vvi>=50&&(iiii+jjjj)%4==1)
+					{
+						gamo[iiii][jjjj]=0;
+					}
+					if(vvi>=75&&(iiii+jjjj)%4==2)
+					{
+						gamo[iiii][jjjj]=0;
+					}
+					if(vvi>=100&&(iiii+jjjj)%4==3)
+					{
+						gamo[iiii][jjjj]=0;
+					}
+				}
+			}	
+		}
+	}
 	if(finn())
 	{
 		vvi=vvi+1;
